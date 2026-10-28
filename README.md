@@ -77,6 +77,22 @@ Abre <http://localhost:4747>, crea un tablero y ábrelo en otra ventana de incó
 
 Variables de entorno opcionales: `PORT` (por defecto 4747), `HOST` y `DATABASE_FILE`.
 
+## Despliegue
+
+Necesita un host que mantenga conexiones WebSocket abiertas, así que no vale un entorno serverless como Vercel. El repo trae un `Dockerfile` y un blueprint de Render:
+
+1. En [Render](https://render.com): **New → Blueprint** y elige este repositorio.
+2. Render lee `render.yaml`, construye la imagen y publica la app en `https://synk0s.onrender.com` (o similar).
+
+En el plan gratuito el disco no es persistente: los tableros se borran en cada redespliegue y la app se duerme tras 15 min sin visitas. Para datos permanentes, añade un disco persistente en `/app/data` o migra a PostgreSQL.
+
+Con Docker en cualquier VPS:
+
+```bash
+docker build -t synk0s .
+docker run -p 4747:4747 -v synk0s-data:/app/data synk0s
+```
+
 ## Tests
 
 ```bash
