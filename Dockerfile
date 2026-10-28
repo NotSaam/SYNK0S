@@ -3,6 +3,11 @@ FROM node:22-slim
 WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# better-sqlite3 es un módulo nativo: si no hay binario precompilado, se compila aquí
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends python3 make g++ \
+  && rm -rf /var/lib/apt/lists/*
+
 COPY package.json package-lock.json ./
 RUN npm ci
 
