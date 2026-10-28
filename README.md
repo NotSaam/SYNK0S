@@ -4,6 +4,8 @@ Tableros kanban donde varias personas trabajan a la vez: las tarjetas, columnas 
 
 Sin registro: creas un tablero, compartes el enlace y a trabajar.
 
+**Demo en vivo: [synk0s.onrender.com](https://synk0s.onrender.com)** (plan gratuito: la primera carga puede tardar unos 50 s en despertar)
+
 ![Tablero con dos usuarios conectados](docs/board.png)
 
 ## Funcionalidades
